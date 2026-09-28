@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zeetchi — делаю красивые сайты под вас</title>
+<meta name="description" content="Zeetchi (Гордей Гордеев). Делаю сайты-визитки и лендинги под вас. Пишите во ВКонтакте.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: linear-gradient(160deg, #fff1fb 0%, #ece8ff 55%, #e3f6ff 100%);
+    --ink: #2a1a5e;
+    --soft: #5b4d8a;
+    --line: rgba(42, 26, 94, .16);
+    --accent: #7c5cff;
+    --accent-ink: #ffffff;
+    --card-bg: rgba(255, 255, 255, .5);
+    --card-border: rgba(255, 255, 255, .8);
+    --card-shadow: 0 30px 80px -30px rgba(90, 60, 200, .45);
+    --link-bg: rgba(255, 255, 255, .65);
+    --orb-opacity: .85;
+    --font-display: "Unbounded", "Arial Black", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Onest", "Segoe UI", system-ui, -apple-system, sans-serif;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: linear-gradient(160deg, #1d1440 0%, #191a4f 55%, #10283f 100%);
+      --ink: #f1ecff;
+      --soft: #c2b8ee;
+      --line: rgba(241, 236, 255, .2);
+      --accent: #a58bff;
+      --accent-ink: #160f38;
+      --card-bg: rgba(255, 255, 255, .07);
+      --card-border: rgba(255, 255, 255, .16);
+      --card-shadow: 0 30px 80px -30px rgba(0, 0, 0, .6);
+      --link-bg: rgba(255, 255, 255, .08);
+      --orb-opacity: .45;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: linear-gradient(160deg, #1d1440 0%, #191a4f 55%, #10283f 100%);
+    --ink: #f1ecff;
+    --soft: #c2b8ee;
+    --line: rgba(241, 236, 255, .2);
+    --accent: #a58bff;
+    --accent-ink: #160f38;
+    --card-bg: rgba(255, 255, 255, .07);
+    --card-border: rgba(255, 255, 255, .16);
+    --card-shadow: 0 30px 80px -30px rgba(0, 0, 0, .6);
+    --link-bg: rgba(255, 255, 255, .08);
+    --orb-opacity: .45;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+  }
+  .orb { position: fixed; z-index: 0; pointer-events: none; border-radius: 50%; filter: blur(70px); opacity: var(--orb-opacity); }
+  .o1 { width: 34rem; height: 34rem; left: -10rem; top: -8rem; background: #ff9fd6; }
+  .o2 { width: 30rem; height: 30rem; right: -8rem; top: 20vh; background: #a78bfa; }
+  .o3 { width: 28rem; height: 28rem; left: 22vw; bottom: -12rem; background: #7ee6cf; }
+  .page {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: clamp(1.25rem, 4vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .card {
+    width: 100%;
+    max-width: 40rem;
+    min-width: 0;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 5vw, 2.75rem);
+    border-radius: 32px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+  }
+  .top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .25rem 1rem;
+    color: var(--soft);
+    font-size: .95rem;
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: min(11vw, 5.2rem);
+    line-height: .95;
+    letter-spacing: -.03em;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  h1 span { display: inline-block; }
+  .tagline {
+    margin: 1.5rem 0 0;
+    max-width: 28rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    line-height: 1.3;
+    letter-spacing: -.01em;
+  }
+  .cta {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: .9rem 1.6rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 12px 28px -10px rgba(124, 92, 255, .7);
+    transition: transform .15s;
+  }
+  .cta:hover { transform: translateY(-2px); }
+  .cta:focus-visible, .link:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+  .links { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; }
+  .link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.05rem 1.25rem;
+    border-radius: 20px;
+    background: var(--link-bg);
+    border: 1px solid var(--line);
+    color: inherit;
+    text-decoration: none;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .link:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -14px rgba(124, 92, 255, .6); }
+  .link-name { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.05rem, 3vw, 1.4rem); }
+  .link-note { color: var(--soft); font-size: .95rem; text-align: right; }
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .5rem 1rem;
+    color: var(--soft);
+    font-size: .95rem;
+  }
+  [hidden] { display: none !important; }
+
+  /* Единственная анимация: буквы имени выезжают при загрузке */
+  @media (prefers-reduced-motion: no-preference) {
+    h1 span { animation: rise .7s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--i) * 70ms); }
+    @keyframes rise { from { transform: translateY(60%); opacity: 0; } to { transform: none; opacity: 1; } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .link, .cta { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="orb o1" aria-hidden="true"></div>
+<div class="orb o2" aria-hidden="true"></div>
+<div class="orb o3" aria-hidden="true"></div>
+
+<main class="page">
+  <div class="card">
+    <div class="top">
+      <span>Гордей Гордеев</span>
+      <span>Сайты-визитки и лендинги</span>
+    </div>
+
+    <section>
+      <h1 aria-label="Zeetchi">
+        <span style="--i:0" aria-hidden="true">Z</span><span style="--i:1" aria-hidden="true">e</span><span style="--i:2" aria-hidden="true">e</span><span style="--i:3" aria-hidden="true">t</span><span style="--i:4" aria-hidden="true">c</span><span style="--i:5" aria-hidden="true">h</span><span style="--i:6" aria-hidden="true">i</span>
+      </h1>
+      <p class="tagline">Делаю красивые сайты под вас.</p>
+      <a class="cta" href="https://vk.ru/zeetchi" target="_blank" rel="noopener noreferrer">Заказать сайт</a>
+    </section>
+
+    <section aria-label="Ссылки">
+      <ul class="links">
+        <li>
+          <a class="link" href="https://vk.ru/zeetchi" target="_blank" rel="noopener noreferrer">
+            <span class="link-name">ВКонтакте</span>
+            <span class="link-note">Гордей Гордеев, пишите здесь</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <div class="bottom">
+      <span>Ответ обычно в течение дня</span>
+      <span id="counter-wrap" hidden>Посетителей: <strong id="counter">0</strong></span>
+    </div>
+  </div>
+</main>
+
+<script>
+  // Счётчик посещений. Показывается только если внешний сервис ответил.
+  // На хостинге, который блокирует внешние запросы, блок остаётся скрытым.
+  (function () {
+    var wrap = document.getElementById("counter-wrap");
+    var out = document.getElementById("counter");
+    var base = "https://api.counterapi.dev/v1/zeetchi-site/visits";
+    var counted = false;
+    try { counted = sessionStorage.getItem("zeetchi-counted") === "1"; } catch (e) {}
+    fetch(counted ? base : base + "/up")
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d && typeof d.count === "number") {
+          out.textContent = d.count.toLocaleString("ru-RU");
+          wrap.hidden = false;
+          try { sessionStorage.setItem("zeetchi-counted", "1"); } catch (e) {}
+        }
+      })
+      .catch(function () {});
+  })();
+</script>
+</body>
+</html>
